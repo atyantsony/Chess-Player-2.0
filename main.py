@@ -47,16 +47,16 @@ def initialize():
     
     # Initiating black_coordinates
     black_board = pg.locateOnScreen("res/black_board.png")
-    init_x = black_board.left + (cell_size/2)+1
-    init_y = black_board.top + (cell_size/2)+1
+    init_x = black_board.left + (cell_size/2)
+    init_y = black_board.top + (cell_size/2)
     for alp in range (104,96,-1):
-        init_y = black_board.top + (cell_size/2)+1
+        init_y = black_board.top + (cell_size/2)
         for num in range(1,9):
             key = chr(alp) + str(num)
             val = (init_x, init_y)
             black_coordinates[key] = val
-            init_y += cell_size+2
-        init_x += cell_size+2
+            init_y += cell_size
+        init_x += cell_size
 
 def cvt_chess_to_index(notation):
     matrix_row = 8-int(notation[1])
@@ -122,6 +122,8 @@ def isPossibleMove(piece, init, dest):
         return ((diffrow == 2 and difffile == 1) or (diffrow == 1 and difffile == 2))
     elif piece == "r" or piece == "R":
         return ((diffrow == 0) or (difffile == 0)) and inBetween(init, dest, diffrow, difffile)
+    else:
+        return True
 
 def calc_mov(piece, dest, init_row = None, init_file = None):
     piece = piece.upper() if (white_turn) else piece.lower()
