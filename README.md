@@ -1,7 +1,7 @@
 # Chess-Player
 This Python Program takes chess steps as input and plays chess from both sides following those steps. The inputed steps needs to follow the chess notation rules.
 
-This Program can work on any chess platform like (lichess.org)[https://lichess.org/], (Chess.com)[https://www.chess.com/], etc.
+This Program can work on any chess platform like [lichess.org](https://lichess.org/), [Chess.com](https://www.chess.com/), etc. I have tested this program only on Lichess for now but I am pretty sure that it will work for other websites too if one follows the below given steps to run the program.
 
 # Disclaimer
 I DO NOT promote any kind of cheating in any way. This project is completely for learning experience and is not meant to be misused for cheating on any chess platforms/competitions.
@@ -27,7 +27,7 @@ pip install pyautogui opencv-python numpy
 4. Select the option to Play with Friend and create a match and join the match from another window (as it is the only way you can control both sides of game) 
 5. Arrange both the windows side by side as shown below.
 
-![image](https://user-images.githubusercontent.com/77500668/178124186-5d42f6e6-2dde-4791-8193-afe9587b65d8.png)
+      ![image](https://user-images.githubusercontent.com/77500668/178124186-5d42f6e6-2dde-4791-8193-afe9587b65d8.png)
 
 6. Now, Take screenshot of the chess board for the white player and save the image in res folder as "white_board.png". Your image should look something like this.
 
