@@ -1,10 +1,12 @@
 from curses.ascii import isupper
+from random import randint
 import pyautogui as pg
 import cv2 as cv
 from time import sleep
 import numpy as np
 
 white_turn = True
+match_result = None
 all_steps = []
 
 white_coordinates = {}
@@ -195,7 +197,7 @@ def read_step(step):
 def read_input():
     f = open("input.txt", "r")
     str = f.read()
-    global all_steps
+    global all_steps, match_result
     word = ""
     steps = []
     for c in str:
@@ -203,15 +205,46 @@ def read_input():
             if '.' in word:
                 word = ""
                 continue
-            steps.append(word)
-            word = ""
-            if (len(steps) == 2):
-                all_steps.append(steps)
-                steps = []
+            if (word == "1/2-1/2"): match_result = 0
+            elif (word == "1-0"): match_result = 1
+            elif (word == "0-1"): match_result = -1
+            else:
+                steps.append(word)
+                word = ""
+                if (len(steps) == 2):
+                    all_steps.append(steps)
+                    steps = []
         else:
             word = word + c
     if (len(steps) != 0): all_steps.append(steps)
     f.close()
+
+def endgame():
+    if (match_result == 0):
+        # sending draw request
+        screenshot = pg.screenshot()
+        screenshot = cv.cvtColor(np.array(screenshot), cv.COLOR_RGB2BGR)
+        draw = pg.locateCenterOnScreen('res/draw.png')
+        pg.doubleClick(x=draw.x, y=draw.y, interval=1)
+
+        # accepting draw request
+        screenshot = pg.screenshot()
+        screenshot = cv.cvtColor(np.array(screenshot), cv.COLOR_RGB2BGR)
+        accept = pg.locateCenterOnScreen('res/accept_draw.png')
+        pg.click(x = accept.x, y = accept.y)
+        
+    elif (match_result == 1 or match_result == -1):
+        screenshot = pg.screenshot()
+        screenshot = cv.cvtColor(np.array(screenshot), cv.COLOR_RGB2BGR)
+        for resign in pg.locateAllOnScreen('res/resign.png'):
+            if (match_result == 1):
+                # white wins, black resigns
+                if (abs(resign.left - black_coordinates["a6"][0]) < abs(resign.left - white_coordinates["h3"][0])):
+                    pg.click(x = resign.left + (resign.width/2), y = resign.top + (resign.height/2), clicks=2, interval=2)
+            else:
+                # black wins, white resigns
+                if (abs(resign.left - black_coordinates["a6"][0]) > abs(resign.left - white_coordinates["h3"][0])):
+                    pg.click(x = resign.left + (resign.width/2), y = resign.top + (resign.height/2), clicks=2, interval=2)
 
 def main():
     global white_turn
@@ -229,5 +262,8 @@ def main():
             print(chess_matrix)
             print("\n\n\n")
             sleep(1)
+            # sleep(15 + randint(-5,5))
+
+    endgame()
 
 main()
