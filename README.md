@@ -41,7 +41,7 @@ pip install pyautogui opencv-python numpy
 
    Example Input:
    ```
-   1. e4 e5 2. Nf3 Nf6 3. Nxe5 d6 4. Nf3 Nxe4 5. d4 d5 6. Bd3 Bd6 7. 0-0 0-0 8. c4 c6 9. Re1 Bf5 10. Qb3 Qd7 11. Nc3 Nxc3 12. Bxf5 Qxf5 13. bxc3 b6 14. cxd5 cxd5 15. Qb5 Qd7 16. a4 Qxb5 17. axb5 a5 18. Nh4 (diagram) g6 19. g4 Nd7 20. Ng2 Rfc8 21. Bf4 Bxf4 22. Nxf4 Rxc3 23. Nxd5 Rd3 24. Re7 Nf8 25. Nf6+ Kg7 26. Ne8+ Kg8 27. d5 a4 28. Nf6+ Kg7 29. g5 a3 30. Ne8+ Kg8 31. Nf6+ Kg7 32. Ne8+ Kg8
+   1. e4 e5 2. Nf3 Nf6 3. Nxe5 d6 4. Nf3 Nxe4 5. d4 d5 6. Bd3 Bd6 7. 0-0 0-0 8. c4 c6 9. Re1 Bf5 10. Qb3 Qd7 11. Nc3 Nxc3 12. Bxf5 Qxf5 13. bxc3 b6 14. cxd5 cxd5 15. Qb5 Qd7 16. a4 Qxb5 17. axb5 a5 18. Nh4 (diagram) g6 19. g4 Nd7 20. Ng2 Rfc8 21. Bf4 Bxf4 22. Nxf4 Rxc3 23. Nxd5 Rd3 24. Re7 Nf8 25. Nf6+ Kg7 26. Ne8+ Kg8 27. d5 a4 28. Nf6+ Kg7 29. g5 a3 30. Ne8+ Kg8 31. Nf6+ Kg7 32. Ne8+ Kg8 1-0 
    ```
    Kindly note that each step should be space seperated from each other and there should be space between the step counting and the steps.
    You can find such more input [here](https://thechesspedia.net/world-championship-matches/)
