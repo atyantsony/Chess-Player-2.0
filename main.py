@@ -167,30 +167,27 @@ def read_step(step):
 
     init_file = None
     init_row = None
-    first_file = True
-    first_num = True
+
     for chr in step:
         if isupper(chr):
             piece = chr
         if chr >= 'a' and chr <= 'h':
-            if first_file:
-                init_file = chr
-                first_file = False
-            dest_file = chr
+            if dest_file == "":
+                dest_file = chr
+            else:
+                init_file = dest_file
+                dest_file = chr
         if chr >= '1' and chr <= '8':
-            if first_num:
-                init_row = chr
-                first_num = False
-            dest_row = chr
+            if dest_row == "":
+                dest_row = chr
+            else:
+                init_row = dest_row
+                dest_row = chr
 
     dest = dest_file + dest_row
     init = None
-    if (init_file != None and init_file != dest_file):
-        init = calc_mov(piece, dest, init_file = init_file)
-    elif(init_row != None and init_row != dest_row):
-        init = calc_mov(piece, dest, init_row = init_row)
-    else:
-        init = calc_mov(piece, dest)
+
+    init = calc_mov(piece, dest, init_row, init_file)
 
     mov(init,dest)
 
@@ -261,8 +258,8 @@ def main():
             white_turn = not white_turn
             print(chess_matrix)
             print("\n\n\n")
-            sleep(1)
-            # sleep(20 + randint(-5,5))
+            sleep(0.5)
+            # sleep(60 + randint(-5,10))
 
     endgame()
 
