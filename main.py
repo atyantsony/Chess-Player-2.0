@@ -144,7 +144,7 @@ def calc_mov(piece, dest, init_row = None, init_file = None):
         initlist[i] = cvt_index_to_chess(initlist[i])
         if (init_file != None and init_file in initlist[i]): return initlist[i]
         if (init_row != None and init_row in initlist[i]): return initlist[i]
-        if (isPossibleMove(piece, initlist[i], dest)): return initlist[i]
+        if (init_file == None and init_row == None and isPossibleMove(piece, initlist[i], dest)): return initlist[i]
 
 def read_step(step):
     piece = 'p'
@@ -262,7 +262,7 @@ def main():
             print(chess_matrix)
             print("\n\n\n")
             sleep(1)
-            # sleep(15 + randint(-5,5))
+            # sleep(20 + randint(-5,5))
 
     endgame()
 
