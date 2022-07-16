@@ -151,14 +151,14 @@ def read_step(step):
     dest_file = ""
     dest_row = ""
 
-    if (step == "0-0"):
+    if (step == "0-0" or step == "O-O"):
         # short castle
         initial = "e1" if (white_turn) else "e8"
         dest = "g1" if (white_turn) else "g8"
         mov(initial, dest, True)
         return
 
-    if (step == "0-0-0"):
+    if (step == "0-0-0" or step == "O-O-O"):
         # long castle
         initial = "e1" if (white_turn) else "e8"
         dest = "c1" if (white_turn) else "c8"
@@ -259,7 +259,7 @@ def main():
             print(chess_matrix)
             print("\n\n\n")
             sleep(0.5)
-            # sleep(60 + randint(-5,10))
+            # sleep(60 + randint(-5,15))
 
     endgame()
 
